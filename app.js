@@ -1,3 +1,4 @@
+var fs = require('fs');
 var express_all_allow = require('express-all-allow');
 var browserify = require('browserify');
 var findImports = require('find-imports');
@@ -6,6 +7,9 @@ var app = express();
 app.use(express_all_allow());
 
 app.get('/module/:module', function(req, res){
+    if (!fs.existsSync('node_modules')){
+    fs.mkdirSync('node_modules');
+  }
   var { exec } = require('child_process');
 exec(`npm list | grep ${req.params.module}`, function(err, stdout, stderr){
 if (stdout == ""){
