@@ -18,7 +18,9 @@ exec('npm install ' + req.params.module, function(err, out, stderr){
    var b = browserify();
   
 b.require(req.params.module);
-b.bundle().pipe(res);
+b.bundle()
+     .on('error', err => { res.send(err) })
+    .pipe(res);
 })
 } else {
  var b = browserify();
