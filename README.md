@@ -1,5 +1,5 @@
 # Modulin
-(Archived for storage, set up own server if needed)
+(Archived for storage, set up own server if needed or use [Frostback](https://github.com/Unzor/frostback))
 
 A tool for using "require()" in the browser with NPM modules.
 
